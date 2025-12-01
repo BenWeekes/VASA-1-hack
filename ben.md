@@ -96,10 +96,31 @@ tail -f wandb/latest-run/files/output.log
 ## Current Status
 
 - **Branch**: `nemo`
-- **Training**: Running (Epoch 0)
+- **Training**: Running in tmux session `vasa_train`
 - **GPU utilization**: ~97%
 - **VRAM usage**: 19.8GB/23GB
 - **Initial loss**: 18-24 (expected to decrease)
+
+## Persistent Training Session
+
+Training runs in a detached tmux session that survives terminal disconnection.
+
+```bash
+# View live training output
+tmux attach -t vasa_train
+
+# Detach from tmux (keep training running)
+# Press: Ctrl+B, then D
+
+# Check if session is running
+tmux ls
+
+# View latest log
+tail -f training.log
+
+# Kill training if needed
+tmux kill-session -t vasa_train
+```
 
 ## Known Issues
 
